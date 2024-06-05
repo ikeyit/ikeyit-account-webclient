@@ -1,0 +1,116 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.7em;
+    color: #1f1f1f;
+    font-size: 13px;
+    background: #ffffff;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.is-center {
+    text-align: center;
+}
+
+.pure-form label {
+    margin: 1em 0 0;
+    font-weight: 500;
+    font-size: 100%;
+}
+
+.pure-form input[type="text"], .pure-form input[type="password"] {
+    border: 2px solid #ddd;
+    box-shadow: none;
+    font-size: 100%;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.button-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60);
+    /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+    /* this is a light blue */
+}
+
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+.home-menu {
+    background: #ffffff;
+}
+
+.home-menu .pure-menu-heading {
+    color: #0078e7;
+    font-weight: 400;
+    font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+    color: white;
+}
+
+.home-menu a {
+    color: #6FBEF3;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #0078e7;
+}
+
+.content-wrapper {
+    width: 100%;
+    min-height: 12%;
+}
+
+.content {
+    padding: 1em 1em 3em;
+}
+
+.content-head {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2em 0 1em;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/*
+ * On tablets and other medium-sized devices,
+ */
+@media (min-width: 600px) {
+    body {
+        font-size: 16px;
+        background: #f0f4f9;
+    }
+}
