@@ -1,9 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
-import {authUser} from "./helper.js";
+import React from "react";
 import "./AppHeader.css"
+import Dropdown from "./ui/Dropdown.jsx";
+import {Link} from "react-router-dom";
+import {useSession} from "./ui/Session.jsx";
 
 export default function AppHeader() {
-    const user = authUser();
+    const {user} = useSession();
     return (
         <div className="header">
             <div className="header-left">
@@ -12,65 +14,38 @@ export default function AppHeader() {
             <div className="header-middle">
             </div>
             <div className="header-right">
-                {user && user.authenticated && <HeaderMenu/>}
+                {user?.authenticated && <HeaderMenu/>}
             </div>
         </div>
     );
 }
 
-
-function HeaderMenu({ onItemSelect }) {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const menuRef = useRef(null);
-    const user = authUser();
-    // Close menu when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setMenuOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
+function HeaderMenu() {
+    const {user} = useSession();
     return (
-        <div className="header-item" ref={menuRef}>
-            <div onClick={() => setMenuOpen(!menuOpen)} className="header-menu-trigger">
-                <img src={user.avatar} alt="avatar" crossOrigin="anonymous"
-                     style={{
-                         height: "2em",
-                         width: "auto",
-                         display: "inline-block",
-                         verticalAlign: "middle",
-                         borderRadius: "50%",
+        <Dropdown trigger={
+            <img src={user.avatar} alt="avatar" crossOrigin="anonymous"
+                 style={{
+                     height: "2em",
+                     width: "auto",
+                     display: "inline-block",
+                     verticalAlign: "middle",
+                     borderRadius: "50%",
 
-                     }}
-                />
-                {menuOpen && <PopupMenu onItemSelect={() => setMenuOpen(false)} />}
-            </div>
-
-        </div>
-    );
-}
-
-function PopupMenu({onItemSelect}) {
-    const user = authUser();
-    return (
-        <div className="header-menu pure-menu">
-            <a href="#" className="pure-menu-heading pure-menu-link">{user.displayName}</a>
-            <ul className="pure-menu-list">
-                <li className="pure-menu-item">
-                    <a href="#" className="pure-menu-link" onClick={onItemSelect}>Setting</a>
+                 }}
+            />
+        }>
+            <div className="header-menu-user">Hi, {user.displayName}</div>
+            <ul className="header-menu menu-vertical">
+                <li>
+                    <Link to="/setting">Setting</Link>
                 </li>
-                <li className="pure-menu-item">
-                    <a href="/logout" className="pure-menu-link" onClick={onItemSelect}>
+                <li>
+                    <a href="/logout">
                         Sign Out
                     </a>
                 </li>
             </ul>
-        </div>
+        </Dropdown>
     )
 }

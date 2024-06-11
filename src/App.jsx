@@ -1,11 +1,24 @@
-import {createBrowserRouter, Outlet, RouterProvider, useLocation} from 'react-router-dom';
+import {createBrowserRouter, Outlet, redirect, RouterProvider, useLocation} from 'react-router-dom';
 import AppHeader from "./AppHeader";
-import './App.css'
 import AppError from "./AppError";
 import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
 import LoginPage from "./LoginPage";
+import SettingPage from "./SettingPage";
 import React from "react";
+import ProfileSetting from "./ProfileSetting.jsx";
+import SecuritySetting from "./SecuritySetting.jsx";
+import {GlobalMessageProvider} from "./ui/GlobalMessage.jsx";
+import {SessionContextProvider} from "./ui/Session.jsx";
+
+function protectedLoader({ request }) {
+    if (!_serverData?.user?.authenticated) {
+        let params = new URLSearchParams();
+        params.set("redirect", new URL(request.url).pathname);
+        return redirect("/login?" + params.toString());
+    }
+    return null;
+}
 
 let router = null;
 function getRouter() {
@@ -19,7 +32,7 @@ function getRouter() {
             errorElement: <AppError />,
             children: [
                 {
-                    path: "/",
+                    index: true,
                     element: <HomePage/>,
                     errorElement: <ErrorPage />,
                 },
@@ -27,6 +40,24 @@ function getRouter() {
                     path: "/login",
                     element: <LoginPage/>,
                     errorElement: <ErrorPage />,
+                },
+                {
+                    path: "/setting",
+                    element: <SettingPage/>,
+                    errorElement: <ErrorPage />,
+                    loader: protectedLoader,
+                    children: [
+                        {
+                            index: true,
+                            element: <ProfileSetting/>,
+                            errorElement: <ErrorPage />
+                        },
+                        {
+                            path: "security",
+                            element: <SecuritySetting/>,
+                            errorElement: <ErrorPage />
+                        }
+                    ]
                 }
             ],
         },
@@ -39,18 +70,17 @@ export default function App() {
 }
 
 function AppInner() {
-    const location = useLocation();
     return (
-        <>
-        <AppHeader/>
-        <div className="content-wrapper">
-            <div className="content">
-            <Outlet />
-            </div>
-        </div>
-        <div className="footer is-center">
-            @ikeyit
-        </div>
-        </>
+        <SessionContextProvider>
+            <GlobalMessageProvider>
+                <AppHeader/>
+                <div className="content-wrapper">
+                    <Outlet />
+                </div>
+                <div className="footer is-center">
+                    @ikeyit
+                </div>
+            </GlobalMessageProvider>
+        </SessionContextProvider>
     );
 }

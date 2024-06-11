@@ -3,12 +3,12 @@ import {useEffect, useRef, useState} from "react";
 export default function CountdownButton({timer = 10, label = "click", counterPrefix = " ", counterSuffix = "", ...properties}) {
     const [prevTimer, setPrevTimer] = useState(timer);
     const [counter, setCounter] = useState(timer);
-    const [disabled, setDisabled] = useState(timer != 0);
+    const [disabled, setDisabled] = useState(timer !== 0);
     useEffect(() => {
         if (counter > 0) {
             const timer = setTimeout(() => setCounter(counter - 1), 1000);
             return () => clearTimeout(timer);
-        } else if (counter == 0) {
+        } else if (counter === 0) {
             setDisabled(false);
         }
     }, [counter]);
@@ -16,7 +16,7 @@ export default function CountdownButton({timer = 10, label = "click", counterPre
     if (prevTimer !== timer) {
         setPrevTimer(timer);
         setCounter(timer);
-        setDisabled(timer != 0);
+        setDisabled(timer !== 0);
     }
 
     return (

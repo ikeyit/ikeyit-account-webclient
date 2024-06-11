@@ -3,7 +3,7 @@ import {useSearchParams} from "react-router-dom";
 import {useForm} from 'react-hook-form';
 import {ajax} from "./ajax";
 import {useAsync} from "ikeyit-react-easy";
-import CountdownButton from "./CountdownButton"
+import CountdownButton from "./ui/CountdownButton.jsx"
 import './LoginPage.css'
 import {authUser, useDocumentTitle} from "./helper.js";
 
@@ -22,9 +22,11 @@ export default function LoginPage() {
     return (
         <div className="login-form">
             <h2>Please login</h2>
-            {authMethod == 1 ? <CodeForm/> : <PasswordForm/>}
-            {authMethod != 1 && <button className="pure-button" onClick={e => setAuthMethod(1)}>Use Code</button>}
-            {authMethod != 0 && <button className="pure-button" onClick={e => setAuthMethod(0)}>Use Password</button>}
+            {authMethod === 1 ? <CodeForm/> : <PasswordForm/>}
+            <div className="login-method">
+                {authMethod !== 1 && <button className="button-outline" onClick={e => setAuthMethod(1)}>Use Code</button>}
+                {authMethod !== 0 && <button className="button-outline" onClick={e => setAuthMethod(0)}>Use Password</button>}
+            </div>
             <SocialLoginArea/>
         </div>
     );
@@ -51,26 +53,24 @@ function CodeForm() {
     }
 
     return (
-        <form className="pure-form pure-form-stacked" onSubmit={handleSubmit(loginExecute)}>
-            {loginError && <span className="form-err">{loginError.errMsg}</span>}
+        <form onSubmit={handleSubmit(loginExecute)}>
+            {loginError && <span className="error">{loginError.errMsg}</span>}
             <input type="text" id="target" placeholder="mobile number"
                    autoFocus="autofocus"  {...register('target', {required: true})}/>
-            {formState.errors.target && <span className="form-err">Mobile is required</span>}
+            {formState.errors.target && <span className="error">Mobile is required</span>}
             <label htmlFor="code">Code</label>
-            <div className="pure-u-1-2">
+            <div className="login-form-code">
                 <input type="text" id="code" placeholder="code" {...register('code', {required: true})}/>
-            </div>
-            <div className="pure-u-1-2" style={{paddingLeft: "1em"}}>
-                <CountdownButton type="button" label="Send" timer={sendStatus == "loading" ? -1 : timer}
-                                 counterSuffix="s" className="pure-button pure-button-primary" autoComplete="off"
+                <CountdownButton type="button" label="Send" timer={sendStatus === "loading" ? -1 : timer}
+                                 counterSuffix="s"  autoComplete="off"
                                  onClick={send}/>
             </div>
-            {formState.errors.code && <span className="form-err">Code is required</span>}
-            {sendStatus == "error" && <span className="form-err">{sendError.errMsg}</span>}
-            <label htmlFor="remember" className="pure-checkbox"><input type="checkbox" id="remember" name="remember"/>
+            {formState.errors.code && <span className="error">Code is required</span>}
+            {sendStatus === "error" && <span className="error">{sendError.errMsg}</span>}
+            <label htmlFor="remember"><input type="checkbox" id="remember" name="remember"/>
                 Remember me
             </label>
-            <button type="submit" className="pure-button pure-button-primary" disabled={loginStatus == "loading"}>
+            <button type="submit" disabled={loginStatus === "loading"}>
                 Sign in Or Sign up
             </button>
         </form>
@@ -89,20 +89,20 @@ function PasswordForm() {
     }
 
     return (
-        <form className="pure-form pure-form-stacked" action="/login" method="post" onSubmit={handleSubmit(onSubmit)}
+        <form action="/login" method="post" onSubmit={handleSubmit(onSubmit)}
               ref={formRef}>
             <input type="hidden" name="redirect" value={redirect || ""}/>
             <input type="hidden" name="_csrf" value={window._serverData.csrfToken}/>
             <input type="text" id="username" placeholder="user name"
                    autoFocus="autofocus" {...register('username', {required: true})}/>
-            {formState.errors.username && <span className="form-err">Username is required</span>}
+            {formState.errors.username && <span className="error">Username is required</span>}
             <label htmlFor="password">Password</label>
             <input type="password" id="password" placeholder="Password" {...register('password', {required: true})}/>
-            {formState.errors.password && <span className="form-err">Password is required</span>}
-            <label htmlFor="remember" className="pure-checkbox"><input type="checkbox" id="remember" name="remember"/>Remember
+            {formState.errors.password && <span className="error">Password is required</span>}
+            <label htmlFor="remember"><input type="checkbox" id="remember" name="remember"/>Remember
                 me</label>
-            {error && <span className="form-err">{errMap[error] || "Unknown error"}</span>}
-            <button type="submit" className="pure-button pure-button-primary">Sign in</button>
+            {error && <span className="error">{errMap[error] || "Unknown error"}</span>}
+            <button type="submit" className="button-primary">Sign in</button>
         </form>
     );
 }
@@ -138,9 +138,8 @@ function SocialLoginArea() {
     }
 
     return (
-        <>
-        <button type="button" className="pure-button pure-button-primary" onClick={() => socialLogin("google")}>Use
-            Google Account</button>
-        </>
+        <div className="login-social">
+            <button type="button" className="button-outline" onClick={() => socialLogin("google")}>Use Google Account</button>
+        </div>
     );
 }

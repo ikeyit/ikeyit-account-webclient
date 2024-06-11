@@ -1,0 +1,24 @@
+.dropdown {
+    position: relative;
+}
+
+.dropdown-trigger {
+    cursor: pointer;
+}
+.dropdown-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    min-width: 150px;
+    display: none;
+}
+
+.dropdown-open .dropdown-panel {
+    display: block;
+}
+
+

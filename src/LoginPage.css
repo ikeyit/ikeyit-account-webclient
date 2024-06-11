@@ -5,22 +5,24 @@
     background: #FFFFFF;
 }
 
-.login-form h2 {
-    margin: 0 0 1em 0;
-    font-size: 200%;
+.login-method, .login-social {
+    margin: 0 auto;
+    padding: var(--form-padding) var(--form-padding) 0;
 }
-
-.login-form input[type="checkbox"] {
-    margin-right: 0.25em;
-}
-
-.login-form button {
+.login-method button, .login-social button {
     width: 100%;
-    margin: 0.25em 0;
+}
+.login-form-code {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--input-margin);
 }
 
-.form-err {
-    color: #aa0000;
-    display: block;
-    font-size: 0.875em;
+.login-form .login-form-code input {
+    flex: 1 1;
+    margin: 0 var(--input-margin) 0 0;
+}
+
+.login-form-code button {
+    flex: 0 0;
 }
