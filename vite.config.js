@@ -13,7 +13,6 @@ export default defineConfig({
     server: {
         port: 6111,
         open: false,
-        allowedHosts: ["account.dev.local"],
         proxy: {
             '/api': {
                 target: 'http://localhost:8080',
