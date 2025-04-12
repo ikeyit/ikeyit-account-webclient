@@ -1,6 +1,8 @@
-# iKeyit Account Web Client
+# IKEYIT Account Web Client
 
 A lightweight authentication center web frontend designed to provide user account management functionality with minimal dependencies. This project serves as the client-side interface for user authentication, registration, and account management.
+
+The backend project is here [ikeyit-aiarch](https://github.com/ikeyit/ikeyit-aiarch)
 
 ## Overview
 
