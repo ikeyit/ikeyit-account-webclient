@@ -1,0 +1,29 @@
+---
+description: 
+globs: *.tsx,*.jsx,*.js,*.ts
+alwaysApply: false
+---
+Code Style and Structure
+- Write Clean, Readable Code: Ensure your code is easy to read and understand. Use descriptive names for variables and functions.
+- Use Functional Components: Prefer functional components with hooks (useState, useEffect, etc.) over class components.
+- Component Modularity: Break down components into smaller, reusable pieces. Keep components focused on a single responsibility.
+- Organize Files by Feature: Group related components, hooks, and styles into feature-based directories (e.g., user-profile, chat-screen).
+
+Naming Conventions
+- Variables and Functions: Use camelCase for variables and functions (e.g. isFetchingData, onUserInput).
+- Components: Use lowercase and hyphenated names for components(e.g. login-page).
+- Directories: Use lowercase and hyphenated names for directories (e.g. user-profile, setting).
+- Event functions should be named with a “on” prefix (e.g. onClick for onClick)
+JavaScript Usage
+- Avoid Global Variables: Minimize the use of global variables to prevent unintended side effects.
+- Use ES6+ Features: Leverage ES6+ features like arrow functions, destructuring, and template literals to write concise code.
+- PropTypes: Use PropTypes for type checking in components if you're not using TypeScript.
+
+Tech stack 
+- React
+- React outer 
+- JavaScript
+- TypeScript
+- TailwindCSS
+- Shadcn
+- The project is SPA

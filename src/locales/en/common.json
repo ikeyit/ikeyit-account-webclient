@@ -1,0 +1,143 @@
+{
+  "home": {
+     "title": "Ikeyit Account"
+  },
+  "login": {
+    "title": "Login",
+    "rememberMe": "Remember me",
+    "usePassword": "Use password",
+    "validation": {
+      "targetRequired": "Please enter your email or phone number",
+      "codeRequired": "Please enter the verification code",
+      "usernameRequired": "User name is required",
+      "passwordRequired": "Password is required"
+    },
+    "sendCodeButton": "Send Code",
+    "resendCodeButton": "Resend ({{seconds}}s)",
+    "useCode": "Use code",
+    "signIn": "Sign In",
+    "signInOrSignUp": "Sign In (Auto Signup)",
+    "usernamePlaceholder": "Enter your phone number or email address",
+    "passwordPlaceholder": "Enter your password",
+    "codePlaceholder": "Enter the received code",
+    "oidcButton": {
+      "google": "Continue with Google",
+      "douyin": "Continue with Douyin",
+      "wechat": "Continue with Wechat"
+    },
+    "signup": "Sign Up"
+  },
+  "accountMenu":{
+    "setting": "Setting",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "setting": {
+    "generalNav": "General",
+    "securityNav": "Security",
+    "modifyButton": "Modify",
+    "generalPageTitle": "Basic setting",
+    "displayNameLabel": "Display name",
+    "displayNameDesc": "The name may appear around Ikeyit.",
+    "avatar": "Avatar",
+    "avatarDesc": "Your profile picture shown across Ikeyit",
+    "languageLabel": "Preferred language",
+    "languageDesc": "This is the language you will see in the Ikeyit web site when you're logged in.",
+    "securityPageTitle": "Security setting",
+    "email": {
+      "emailLabel": "Email",
+      "emailDesc": "The current email is {{email}}. You can use this email to log in Ikeyit and receive important messages from Ikeyit.",
+      "emailDescEmpty": "You haven't set an email address yet. Adding an email address helps secure your account.",
+      "modifyButton": "Modify",
+      "dialogTitle": "Set new email",
+      "nextButton": "Next",
+      "newEmailLabel": "New Email",
+      "newEmailPlaceholder": "Input new email address",
+      "codeLabel": "Verification code sent to {{email}}",
+      "codePlaceholder": "Input the code in your new email",
+      "validation": {
+        "emailRequired": "Email is required",
+        "invalidEmail": "Invalid email",
+        "codeRequired": "Code is required"
+      },
+      "updateButton": "Update"
+    },
+    "password": {
+      "passwordLabel": "Password",
+      "passwordDesc": "Your password is important. Keep it safe.",
+      "modifyButton": "Modify",
+      "validation": {
+        "oldPasswordRequired": "Please enter your old password",
+        "newPasswordRequired": "Please enter your new password",
+        "confirmPasswordRequired": "Please confirm your new password",
+        "passwordNotMatch": "Passwords do not match"
+      },
+      "dialogTitle": "Update the password",
+      "oldPasswordLabel": "Old Password",
+      "newPasswordLabel": "New Password",
+      "confirmPasswordLabel": "Confirm new password",
+      "updateButton": "Update",
+      "oldPasswordPlaceholder": "Old password",
+      "newPasswordPlaceholder": "New password",
+      "confirmPasswordPlaceholder": "Confirm new password"
+    },
+    "phone": {
+      "phoneLabel": "Phone",
+      "phoneDesc": "The current phone number is {{phone}}. You can use this phone number to log in Ikeyit and receive important messages from Ikeyit.",
+      "phoneDescEmpty": "You haven't set a phone number yet. Adding a phone number helps secure your account.",
+      "modifyButton": "Modify",
+      "dialogTitle": "Set new phone number",
+      "nextButton": "Next",
+      "newPhonePlaceholder": "Input new phone number",
+      "codeLabel": "Verification code sent to {{phone}}",
+      "validation": {
+        "phoneRequired": "Phone number is required",
+        "invalidPhone": "Invalid phone number",
+        "codeRequired": "Code is required"
+      },
+      "updateButton": "Update"
+    }
+  },
+  "saved": "Saved successfully",
+  "error": {
+    "unknown": "An unknown error occurred"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "step1": {
+      "title": "What's your phone number or email?",
+      "placeholder": "Enter phone number or email",
+      "continueButton": "Continue"
+    },
+    "step2": {
+      "title": "Enter the 4-digit code sent to you at:",
+      "resendButton": "Resend",
+      "resendWithTime": "Resend ({{seconds}}s)",
+      "displayNameLabel": "Display Name",
+      "displayNamePlaceholder": "Display name",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Create a password",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "backButton": "←",
+      "nextButton": "Next →"
+    },
+    "validation": {
+      "contactRequired": "Email or phone number is required",
+      "invalidContact": "Please enter a valid email or phone number",
+      "codeRequired": "Verification code is required",
+      "invalidCode": "Please enter the 4-digit code",
+      "displayNameRequired": "Display name is required",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordComplexity": "Password must contain at least one letter, one number, and one special character (#?!@$%^&*-+_)",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordsNotMatch": "Passwords must match"
+    },
+    "errors": {
+      "verificationFailed": "Failed to send verification code",
+      "signupFailed": "Failed to complete signup",
+      "resendFailed": "Failed to resend verification code"
+    }
+  }
+}
