@@ -32,7 +32,8 @@ export default function LoginPage() {
     }
     const {session:{user}} = useSession();
     const oidcProviders = useLoaderData();
-    if (user?.authenticated) {
+    const mode = searchParams.get("mode");
+    if (user?.authenticated && "force" !== mode) {
         redirectLocation(searchParams);
     }
     return (
@@ -268,6 +269,29 @@ function PasswordForm() {
 
 
 function SocialLoginArea({oidcProviders}) {
+    const {t } = useTranslation();
+    const [searchParams] = useSearchParams();
+    const redirect = searchParams.get("redirect")
+    function socialLogin(provider) {
+        const urlSearchParams = new URLSearchParams();
+        if (redirect) {
+            urlSearchParams.set("redirect", redirect);
+        }
+        window.location.href = `/auth/authorization/${provider.id}?${urlSearchParams}`
+    }
+
+    return (
+        <>
+            {oidcProviders.map(provider =>
+                <Button key={provider.id} type="button" variant="secondary" className="w-full" onClick={() => socialLogin(provider)}>
+                    {t(`login.oidcButton.${provider.id}`)}
+                </Button>
+            )}
+        </>
+    );
+}
+
+function PopupSocialLoginArea({oidcProviders}) {
     const {t } = useTranslation();
     const [searchParams] = useSearchParams();
 

@@ -1,4 +1,5 @@
 const baseUrl = "";
+const accountApiUrlPrefix = "/api/account/v1"
 const loginUrl = "/login?redirect=";
 
 function csrfToken() {
@@ -49,7 +50,7 @@ export default async function fetchData(url, init = {}) {
 }
 
 export async function getSession() {
-    const {csrfToken, ...props} = await fetchData('/api/session')
+    const {csrfToken, ...props} = await fetchData(`${accountApiUrlPrefix}/session`)
     window._csrfToken = csrfToken;
     return props;
 }
@@ -63,7 +64,15 @@ export async function postSendLoginCode(params) {
         body: new URLSearchParams(params),
     })
 }
-
+export async function login(params) {
+    return fetchData('/auth/login', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(params),
+    })
+}
 export async function postLoginAuthCode(params) {
     return fetchData('/auth/verify-code', {
         method: 'POST',
@@ -75,90 +84,80 @@ export async function postLoginAuthCode(params) {
 }
 
 export async function verifySignup(params) {
-    return fetchData('/auth/signup/verify', {
+    return fetchData(`${accountApiUrlPrefix}/signup/verify`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function signup(params) {
-    return fetchData('/auth/signup', {
+    return fetchData(`${accountApiUrlPrefix}/signup`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
-export async function login(params) {
-    return fetchData('/auth/login', {
+export async function getOidcProviders() {
+    return fetchData(`${accountApiUrlPrefix}/oidc-providers`)
+}
+
+export async function presignUpload() {
+    return fetchData(`${accountApiUrlPrefix}/presign-upload`, {
         method: 'POST',
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams(params),
-    })
+    });
 }
 
 export async function getUserProfile() {
-    return fetchData('/api/user/profile')
-}
-
-export async function getOidcProviders() {
-    return fetchData('/api/oidc-providers')
+    return fetchData(`${accountApiUrlPrefix}/me/profile`)
 }
 
 export async function updateUserProfile(params) {
-    return fetchData('/api/user/profile', {
+    return fetchData(`${accountApiUrlPrefix}/me/profile`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function updateUserLocale(params) {
-    return fetchData('/api/user/locale', {
+    return fetchData(`${accountApiUrlPrefix}/me/locale`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function verifyUserEmail(params) {
-    return fetchData('/api/user/email/verification', {
+    return fetchData(`${accountApiUrlPrefix}/me/email/verification`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function updateUserEmail(params) {
-    return fetchData('/api/user/email', {
+    return fetchData(`${accountApiUrlPrefix}/me/email`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function verifyUserPhone(params) {
-    return fetchData('/api/user/phone/verification', {
+    return fetchData(`${accountApiUrlPrefix}/me/phone/verification`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function updateUserPhone(params) {
-    return fetchData('/api/user/phone', {
+    return fetchData(`${accountApiUrlPrefix}/me/phone`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
 }
 
 export async function updateUserPassword(params) {
-    return fetchData('/api/user/password', {
+    return fetchData(`${accountApiUrlPrefix}/me/password`, {
         method: 'POST',
         body: JSON.stringify(params),
     })
-}
-
-export async function presignUpload() {
-    return fetchData(`/api/presign-upload`, {
-        method: 'POST',
-    });
 }
 
 export async function updateUserAvatar(file) {
