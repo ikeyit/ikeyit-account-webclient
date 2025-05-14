@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils.js";
 import { Input } from "@/components/ui/input.jsx";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select.jsx";
-
 // Country codes data with flags
 const countryCodes = [
     { code: "+1", country: "US", flag: "🇺🇸" },
@@ -29,9 +28,13 @@ const countryCodes = [
     { code: "+27", country: "ZA", flag: "🇿🇦" },
     { code: "+966", country: "SA", flag: "🇸🇦" },
     { code: "+235", country: "TD", flag: "🇹🇩" },
+    { code: "+255", country: "KE", flag: "🇰🇪" },
+    { code: "+213", country: "MA", flag: "🇲🇦" },
+    { code: "+261", country: "BW", flag: "🇧🇼" },
 ];
 
 const countryCodeSet = new Set(countryCodes.map((country) => country.code));
+const defaultCountryCode = "+86";
 
 function extractCountryCode(phoneNumber) {
     for (let i = 4; i >= 2; i--) {
@@ -47,11 +50,11 @@ function extractCountryCode(phoneNumber) {
 function initState(value, inputMode) {
     // If inputMode is set to 'phone', force phone input type
     if (inputMode === 'phone') {
-        let countryCode = "+1";
+        let countryCode = defaultCountryCode;
         let phoneValue = "";
         
         if (value) {
-            countryCode = extractCountryCode(value) || "+1";
+            countryCode = extractCountryCode(value) || defaultCountryCode;
             phoneValue = countryCode ? value.substring(countryCode.length) : value;
         }
         
@@ -68,7 +71,7 @@ function initState(value, inputMode) {
         return {
             inputType: "email",
             phoneValue: "",
-            countryCode: "+1",
+            countryCode: defaultCountryCode,
             emailValue: value || ""
         };
     }
@@ -77,7 +80,7 @@ function initState(value, inputMode) {
     if (!value) return {
         inputType: "email",
         phoneValue: "",
-        countryCode: "+1",
+        countryCode: defaultCountryCode,
         emailValue: ""
     };
     
@@ -85,7 +88,7 @@ function initState(value, inputMode) {
         return {
             inputType: "email",
             phoneValue: "",
-            countryCode: "+1",
+            countryCode: defaultCountryCode,
             emailValue: value
         };
     } else {
@@ -94,7 +97,7 @@ function initState(value, inputMode) {
         if (countryCode) {
             phoneValue = value.substring(countryCode.length);
         } else {
-            countryCode = "+1";
+            countryCode = defaultCountryCode;
         }
         return {
             inputType: "phone",
