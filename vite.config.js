@@ -30,7 +30,7 @@ export default defineConfig(({mode}) => {
             port: 6111,
             open: false,
             https,
-            host: 'localhost',
+            host: '0.0.0.0',
             proxy: {
                 '/api': {
                     target: 'http://localhost:8080',
