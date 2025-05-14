@@ -7,10 +7,8 @@ import AvatarSetting from "./ui/avatar-setting.jsx";
 
 export default function GeneralSettingPage() {
     const user = useRouteLoaderData("userProfileSetting");
-    const {t} = useTranslation();
     return (
         <div className="space-y-6">
-            <title>{t("setting.generalPageTitle")}</title>
             <ProfileSetting
                 value={user.displayName}
             />

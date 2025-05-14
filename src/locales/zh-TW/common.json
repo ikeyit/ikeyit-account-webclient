@@ -1,9 +1,11 @@
 {
   "home": {
-    "title": "Ikeyit帳戶"
+    "title": "IKEYIT帳戶"
   },
   "login": {
-    "title": "登入",
+    "title": "登入IKEYIT帳戶",
+    "header": "登入",
+    "slogan": "IKEYIT帳戶",
     "rememberMe": "記住我",
     "usePassword": "使用密碼登入",
     "validation": {
@@ -33,6 +35,7 @@
     "logout": "登出"
   },
   "setting": {
+    "pageTitle": "IKEYIT帳戶設定",
     "generalNav": "基本",
     "securityNav": "安全",
     "modifyButton": "修改",
@@ -43,7 +46,6 @@
     "avatarDesc": "您在Ikeyit上展示的頭像",
     "languageLabel": "偏好語言",
     "languageDesc": "登入Ikeyit網站後顯示的語言",
-    "securityPageTitle": "帳戶設定",
     "email": {
       "emailLabel": "電子郵件",
       "emailDesc": "當前郵件為{{email}}。您可以使用該電子郵件登入和接收來自Ikeyit重要的通知",

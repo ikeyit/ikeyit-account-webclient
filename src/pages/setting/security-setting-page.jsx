@@ -7,10 +7,8 @@ import PhoneSetting from "./ui/phone-setting.jsx";
 
 export default function SecuritySettingPage() {
     const user = useRouteLoaderData("userProfileSetting");
-    const {t} = useTranslation();
     return (
         <div className="space-y-6">
-            <title>{t("setting.securityPageTitle")}</title>
             <EmailSetting
                 value={user.email}
             />

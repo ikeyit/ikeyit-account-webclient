@@ -1,9 +1,11 @@
 {
   "home": {
-    "title": "Ikeyit账户"
+    "title": "IKEYIT认证中心"
   },
   "login": {
-    "title": "登录",
+    "title": "登录IKEYIT认证中心",
+    "header": "登录",
+    "slogan": "IKEYIT认证中心",
     "rememberMe": "记住我",
     "usePassword": "使用密码登录",
     "validation": {
@@ -33,10 +35,10 @@
     "logout": "退出"
   },
   "setting": {
+    "pageTitle": "IKEYIT账户设置",
     "generalNav": "基本",
     "securityNav": "安全",
     "modifyButton": "修改",
-    "generalPageTitle": "账户设置",
     "displayNameLabel": "展示名称",
     "displayNameDesc": "您在Ikeyit上公开展示给外界的名称",
     "avatar": "头像",

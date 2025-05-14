@@ -1,9 +1,11 @@
 {
   "home": {
-     "title": "Ikeyit Account"
+     "title": "IKEYIT Account"
   },
   "login": {
-    "title": "Login",
+    "title": "Login IKEYIT",
+    "header": "Login",
+    "slogan": "IKEYIT Account",
     "rememberMe": "Remember me",
     "usePassword": "Use password",
     "validation": {
@@ -33,10 +35,10 @@
     "logout": "Logout"
   },
   "setting": {
+    "pageTitle": "IKEYIT Account Setting",
     "generalNav": "General",
     "securityNav": "Security",
     "modifyButton": "Modify",
-    "generalPageTitle": "Basic setting",
     "displayNameLabel": "Display name",
     "displayNameDesc": "The name may appear around Ikeyit.",
     "avatar": "Avatar",

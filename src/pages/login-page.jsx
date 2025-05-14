@@ -23,7 +23,7 @@ function redirectLocation(searchParams) {
 const DISABLE_REMEMBER_ME = true;
 export default function LoginPage() {
     const {t } = useTranslation();
-    const [authMethod, setAuthMethod] = useState(1);
+    const [authMethod, setAuthMethod] = useState(0);
     const [searchParams] = useSearchParams();
     const redirect = searchParams.get("redirect");
     const searchParamsForSignup = new URLSearchParams();
@@ -41,10 +41,10 @@ export default function LoginPage() {
             <title>{t("login.title")}</title>
             <div className="w-full bg-white p-8 space-y-8 sm:rounded-lg sm:border sm:w-96">
                 <h2 className="flex items-center justify-between text-2xl font-bold text-center">
-                    {t('login.title')}
+                    {t('login.header')}
                     <div className="flex items-center text-primary text-xl font-bold">
                         <LogoIcon className="h-8 w-8 text-primary" />
-                        IKEYIT
+                        {t("login.slogan")}
                     </div>
                 </h2>
                 {authMethod === 1 ? <CodeForm/> : <PasswordForm/>}
